@@ -1,3 +1,13 @@
+-- date is a litteral date. We need to specify it as '2018-10-22' for example
+select trunc(date '&1' - sysdate) days from dual;
+-- This is discouraged as the conversion will be based on the NLS_DATE_FORMAT which is definded in the session.
+-- or we need to specify it with
+-- alter session set nls_date_format  = 'yyyy-mm-dd';
+-- select trunc('&1' - sysdate) days from dual;
+select trunc(to_date('2018-10-22', 'yyyy-mm-dd') - sysdate) days from dual;
+select trunc(months_between(date '&1', sysdate) * 30) days from dual;
+select numtodsinterval(date '&1' - sysdate, 'DAY') age from dual;
+
 create or replace procedure days_remaining_v1(p_date in varchar2) as
     calc_date date;
     days number;

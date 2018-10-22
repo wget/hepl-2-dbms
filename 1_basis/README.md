@@ -41,4 +41,5 @@
   Port: 1521
   Service name: orcl
   ```
-    
+
+* Import the schema `sakila` with `Sakila/CreateSakila.sql`
